@@ -49,7 +49,6 @@ public class LeaveDetails extends AppCompatActivity {
         timeDetails.setText(leaveDetails.getDuration());
         reasonDetails.setText(leaveDetails.getKind_of_leave());
 
-
     }
 
     @Override

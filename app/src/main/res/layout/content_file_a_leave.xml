@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <TextView
         android:id="@+id/textView6"
@@ -47,7 +49,7 @@
         android:text="@string/date" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/file_start_date"
         android:drawableRight="@drawable/ic_date_range_black_24px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,12 +61,12 @@
         android:textSize="14sp" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/file_end_date"
         android:drawableRight="@drawable/ic_date_range_black_24px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editText3"
-        android:layout_toEndOf="@+id/editText3"
+        android:layout_alignBottom="@+id/file_start_date"
+        android:layout_toEndOf="@+id/file_start_date"
         android:ems="10"
         android:hint="@string/to"
         android:inputType="date"
@@ -74,13 +76,13 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText3"
-        android:layout_below="@+id/editText3"
+        android:layout_alignStart="@+id/file_start_date"
+        android:layout_below="@+id/file_start_date"
         android:layout_marginTop="18dp"
         android:text="@string/time" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/file_start_time"
         android:drawableRight="@drawable/ic_schedule_black_24px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -92,12 +94,12 @@
         android:textSize="14sp" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/file_end_time"
         android:drawableRight="@drawable/ic_schedule_black_24px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/editText5"
-        android:layout_toEndOf="@+id/editText5"
+        android:layout_alignTop="@+id/file_start_time"
+        android:layout_toEndOf="@+id/file_start_time"
         android:ems="10"
         android:hint="@string/to"
         android:inputType="time"
@@ -107,8 +109,8 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText5"
-        android:layout_below="@+id/editText5"
+        android:layout_alignStart="@+id/file_start_time"
+        android:layout_below="@+id/file_start_time"
         android:layout_marginTop="20dp"
         android:text="@string/reason" />
 
@@ -116,21 +118,23 @@
         android:id="@+id/editText7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button"
-        android:layout_alignEnd="@+id/editText6"
+        android:layout_above="@+id/btn_submit_leave"
+        android:layout_alignEnd="@+id/file_end_time"
         android:layout_alignStart="@+id/textView9"
         android:layout_below="@+id/textView9"
         android:ems="10"
         android:inputType="textMultiLine" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_submit_leave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/editText7"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/editText7"
         android:layout_marginBottom="40dp"
-        android:text="@string/submit" />
+        android:background="@color/colorPrimary"
+        android:text="@string/submit"
+        android:textColor="@color/colorText" />
 
 </RelativeLayout>

@@ -7,7 +7,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.dc.ileave.adapter.UserInfoAdapter;
 import com.example.dc.ileave.objects.Leave;
 import com.example.dc.ileave.objects.UsersInfo;
 
@@ -30,7 +29,7 @@ public class BackgroundTask {
     private ArrayList<Leave> cancelledLeaves = new ArrayList<Leave>();
     private ArrayList<Leave> rejectedLeaves = new ArrayList<Leave>();
 
-    String BASE_URL = "http://192.168.1.2/iLeave/";
+    String BASE_URL = "http://192.168.0.15/iLeave/";
 
     public BackgroundTask(Context context) {
         this.context = context;

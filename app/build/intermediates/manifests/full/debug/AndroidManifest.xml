@@ -32,6 +32,7 @@
         <activity
             android:name="com.example.dc.ileave.LeaveDetails"
             android:theme="@style/AppTheme" />
+        <activity android:name="com.example.dc.ileave.FileLeave" />
 
         <meta-data
             android:name="android.support.VERSION"

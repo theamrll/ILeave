@@ -3,8 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp">
-
+    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <TextView
         android:id="@+id/textView2"
@@ -12,12 +13,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="27dp"
         android:text="@string/name" />
 
     <TextView
         android:id="@+id/txt_leave_details_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView2"
@@ -36,9 +37,9 @@
 
     <TextView
         android:id="@+id/txt_leave_details_date"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/txt_leave_details_name"
+        android:layout_alignStart="@+id/txt_leave_details_name"
         android:layout_below="@+id/textView4"
         android:text="TextView"
         android:textStyle="bold" />
@@ -54,9 +55,9 @@
 
     <TextView
         android:id="@+id/txt_leave_details_time"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/txt_leave_details_date"
+        android:layout_alignStart="@+id/txt_leave_details_date"
         android:layout_below="@+id/textView11"
         android:text="TextView"
         android:textStyle="bold" />
@@ -72,7 +73,7 @@
 
     <TextView
         android:id="@+id/txt_leave_details_reason"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/txt_leave_details_time"
         android:layout_below="@+id/textView14"
@@ -80,27 +81,26 @@
 
     <Button
         android:id="@+id/btn_approve"
-        android:layout_width="175dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="42dp"
+        android:layout_marginBottom="37dp"
         android:background="@color/colorPrimary"
         android:text="Approve"
         android:textColor="@color/colorText" />
 
     <Button
         android:id="@+id/btn_reject"
-        android:layout_width="175dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/btn_approve"
         android:layout_alignBottom="@+id/btn_approve"
-        android:layout_alignParentEnd="true"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/btn_approve"
         android:background="@color/colorPrimary"
         android:text="Reject"
         android:textColor="@color/colorText" />
-
-    <!--</RelativeLayout>-->
 
 
 </RelativeLayout>

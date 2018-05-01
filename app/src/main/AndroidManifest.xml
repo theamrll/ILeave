@@ -24,7 +24,8 @@
         </activity>
         <activity
             android:name=".LeaveDetails"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".FileLeave"></activity>
     </application>
 
 </manifest>
