@@ -28,26 +28,34 @@ public class BackgroundTask {
     private ArrayList<Leave> approvedLeaves = new ArrayList<Leave>();
     private ArrayList<Leave> cancelledLeaves = new ArrayList<Leave>();
     private ArrayList<Leave> rejectedLeaves = new ArrayList<Leave>();
+    private ArrayList<Leave> allLeaves = new ArrayList<Leave>();
 
-    String BASE_URL = "http://192.168.0.15/iLeave/";
+    String BASE_URL = "http://192.168.2.113/iLeave/";
 
     public BackgroundTask(Context context) {
         this.context = context;
     }
 
-    public ArrayList<UsersInfo> getList() {
+    public ArrayList<Leave> getLeaves() {
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BASE_URL + "users_info/get_users_info.php", null,
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BASE_URL + "leaves/get_leaves.php", null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         for (int i=0; i < response.length(); i++) {
                             try {
                                 JSONObject jsonObject = response.getJSONObject(i);
-                                UsersInfo usersInfo = new UsersInfo(jsonObject.getString("username"),
-                                        jsonObject.getString("fname"));
+                                Leave leave = new Leave(jsonObject.getInt("id_pending"),
+                                        jsonObject.getString("leave_status"),
+                                        jsonObject.getString("assignor"),
+                                        jsonObject.getString("username"),
+                                        jsonObject.getString("approver"),
+                                        jsonObject.getString("kind_of_leave"),
+                                        jsonObject.getString("start_date"),
+                                        jsonObject.getString("end_date"),
+                                        jsonObject.getString("duration"));
 
-                                usersInfoList.add(usersInfo);
+                                allLeaves.add(leave);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -67,7 +75,7 @@ public class BackgroundTask {
         Singleton.getInstance(context).addToRequestQueue(jsonArrayRequest);
 
 
-        return usersInfoList;
+        return allLeaves;
     }
 
     public ArrayList<Leave> getPendingLeaves() {
@@ -80,7 +88,7 @@ public class BackgroundTask {
                             try {
                                 JSONObject jsonObject = response.getJSONObject(i);
                                 Leave leave = new Leave(jsonObject.getInt("id_pending"),
-                                        jsonObject.getString("status"),
+                                        jsonObject.getString("leave_status"),
                                         jsonObject.getString("assignor"),
                                         jsonObject.getString("username"),
                                         jsonObject.getString("approver"),
@@ -121,7 +129,7 @@ public class BackgroundTask {
                             try {
                                 JSONObject jsonObject = response.getJSONObject(i);
                                 Leave leave = new Leave(jsonObject.getInt("id_pending"),
-                                        jsonObject.getString("status"),
+                                        jsonObject.getString("leave_status"),
                                         jsonObject.getString("assignor"),
                                         jsonObject.getString("username"),
                                         jsonObject.getString("approver"),
@@ -163,7 +171,7 @@ public class BackgroundTask {
                             try {
                                 JSONObject jsonObject = response.getJSONObject(i);
                                 Leave leave = new Leave(jsonObject.getInt("id_pending"),
-                                        jsonObject.getString("status"),
+                                        jsonObject.getString("leave_status"),
                                         jsonObject.getString("assignor"),
                                         jsonObject.getString("username"),
                                         jsonObject.getString("approver"),
@@ -204,7 +212,7 @@ public class BackgroundTask {
                             try {
                                 JSONObject jsonObject = response.getJSONObject(i);
                                 Leave leave = new Leave(jsonObject.getInt("id_pending"),
-                                        jsonObject.getString("status"),
+                                        jsonObject.getString("leave_status"),
                                         jsonObject.getString("assignor"),
                                         jsonObject.getString("username"),
                                         jsonObject.getString("approver"),

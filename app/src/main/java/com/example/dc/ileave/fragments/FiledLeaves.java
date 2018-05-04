@@ -5,7 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.SearchView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
@@ -54,10 +60,16 @@ public class FiledLeaves extends Fragment {
     private ArrayList<Leave> cleaves = new ArrayList<Leave>();
     private ArrayList<Leave> rleaves = new ArrayList<Leave>();
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.content_filed_leaves, null);
+            View view = inflater.inflate(R.layout.content_filed_leaves, null);
 
         expandableListView = (ExpandableListView) view.findViewById(R.id.expandable_listview);
         List<String> headings = new ArrayList<String>();
@@ -107,4 +119,30 @@ public class FiledLeaves extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        inflater.inflate(R.menu.menu_filed_leaves, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (TextUtils.isEmpty(newText)) {
+                    expandableListView.clearTextFilter();
+                } else {
+                    expandableListView.setFilterText(newText);
+                }
+//                filedLeavesAdapter.getFilter().filter(newText);
+                return true;
+            }
+        });
+
+    }
 }

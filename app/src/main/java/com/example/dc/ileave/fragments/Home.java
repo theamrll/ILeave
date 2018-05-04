@@ -9,11 +9,13 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dc.ileave.BackgroundTask;
 import com.example.dc.ileave.FileLeave;
+import com.example.dc.ileave.LeaveDetails;
 import com.example.dc.ileave.MainActivity;
 import com.example.dc.ileave.R;
 import com.example.dc.ileave.adapter.PendingLeavesAdapter;
@@ -32,6 +34,7 @@ public class Home extends Fragment {
     private RecyclerView recyclerViewPending;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
+    private BackgroundTask backgroundTask = new BackgroundTask(getContext());
 
     private ArrayList<Leave> pendingLeavesList;
 
@@ -55,12 +58,9 @@ public class Home extends Fragment {
             }
         });
 
-        BackgroundTask backgroundTask = new BackgroundTask(getContext());
-
         pendingLeavesList = backgroundTask.getPendingLeaves();
-        adapter = new PendingLeavesAdapter(pendingLeavesList);
+        adapter = new PendingLeavesAdapter(getContext(), pendingLeavesList);
         recyclerViewPending.setAdapter(adapter);
-
         return view;
 
     }
@@ -68,7 +68,5 @@ public class Home extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
     }
 }

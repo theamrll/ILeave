@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
 
-
         Home home = new Home();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity
 
         BackgroundTask backgroundTask = new BackgroundTask(MainActivity.this);
         usersInfosList = backgroundTask.getPendingLeaves();
-        adapter = new PendingLeavesAdapter(usersInfosList);
+        adapter = new PendingLeavesAdapter(MainActivity.this, usersInfosList);
 //        recyclerView.setAdapter(adapter);
     }
 
@@ -85,9 +84,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
